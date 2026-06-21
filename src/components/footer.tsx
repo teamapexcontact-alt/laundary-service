@@ -117,6 +117,23 @@ export function Footer() {
       </Container>
 
       <div className="border-t border-primary-foreground/10">
+        <div className="bg-primary-foreground/5">
+          <Container className="py-8">
+            <div className="flex flex-wrap items-center justify-center gap-8">
+              {[
+                { label: "Insured Against Damage", icon: "🛡️" },
+                { label: "Hygiene Certified", icon: "✅" },
+                { label: "Eco-Friendly Detergents", icon: "🌿" },
+                { label: "On-Time Delivery", icon: "⏱️" },
+              ].map((badge) => (
+                <div key={badge.label} className="flex items-center gap-2 text-sm text-primary-foreground/70">
+                  <span className="text-lg">{badge.icon}</span>
+                  <span>{badge.label}</span>
+                </div>
+              ))}
+            </div>
+          </Container>
+        </div>
         <Container className="py-6">
           <div className="flex flex-col items-center justify-between gap-4 sm:flex-row">
             <p className="text-xs text-primary-foreground/50">

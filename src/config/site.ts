@@ -1,8 +1,7 @@
-
 export const siteConfig = {
   name: "APEX Laundry Service",
   tagline: "Premium Laundry & Garment Care",
-  description: "Premium laundry and garment care services with pickup & delivery across Hyderabad.",
+  description: "Door-to-door laundry, picked up and delivered fresh.",
   url: "https://apexlaundryservice.com",
   instagram: "@apexlaundryservice",
   instagramUrl: "https://instagram.com/apexlaundryservice",
@@ -10,17 +9,26 @@ export const siteConfig = {
   phoneDisplay: "+91 98765 43210",
   email: "hello@apexlaundryservice.com",
   workingHours: "Mon - Sun: 8:00 AM - 8:00 PM",
-  openGraph: {
-    image: "/images/og-image.jpg",
+  trustBadges: [
+    "Insured Against Damage",
+    "Hygiene Certified",
+    "Eco-Friendly Detergents",
+  ],
+  subscriptionPlan: {
+    name: "Unlimited Wash",
+    price: 1999,
+    unit: "/month",
+    description: "Up to 30kg of laundry every month. Free pickup & delivery.",
   },
 };
 
 export const navigation = [
   { name: "Home", href: "/" },
+  { name: "Schedule", href: "/schedule" },
   { name: "Services", href: "/services" },
+  { name: "Track", href: "/track" },
   { name: "Branches", href: "/branches" },
-  { name: "About", href: "/about" },
-  { name: "Franchise", href: "/franchise" },
+  { name: "Account", href: "/account" },
   { name: "Contact", href: "/contact" },
 ];
 
@@ -31,6 +39,7 @@ export const branches = [
     address: "Dairy Farm Road, Near Sub Station, Alwal, Hyderabad, Telangana 500010",
     phone: "+91 9876543210",
     hours: "8:00 AM - 8:00 PM",
+    pincodes: ["500010", "500011", "500012"],
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.1234567890123!2d78.5!3d17.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sDairy+Farm+Road!5e0!3m2!1sen!2sin!4v1",
   },
   {
@@ -39,6 +48,7 @@ export const branches = [
     address: "Suchitra Circle, Hyderabad, Telangana 500067",
     phone: "+91 9876543210",
     hours: "8:00 AM - 8:00 PM",
+    pincodes: ["500067", "500068", "500069"],
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.1234567890123!2d78.5!3d17.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sSuchitra!5e0!3m2!1sen!2sin!4v1",
   },
   {
@@ -47,6 +57,7 @@ export const branches = [
     address: "Kompally, Hyderabad, Telangana 500014",
     phone: "+91 9876543210",
     hours: "8:00 AM - 8:00 PM",
+    pincodes: ["500014", "500015", "500016"],
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.1234567890123!2d78.5!3d17.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sKompally!5e0!3m2!1sen!2sin!4v1",
   },
   {
@@ -55,118 +66,150 @@ export const branches = [
     address: "Gundlapochampally, Hyderabad, Telangana 500010",
     phone: "+91 9876543210",
     hours: "8:00 AM - 8:00 PM",
+    pincodes: ["500010", "500020", "500021"],
     mapSrc: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3805.1234567890123!2d78.5!3d17.5!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2sGundlapochampally!5e0!3m2!1sen!2sin!4v1",
   },
 ];
 
+export const allPincodes = branches.flatMap((b) => b.pincodes);
+
+export function checkServiceability(pincode: string): boolean {
+  return allPincodes.includes(pincode);
+}
+
 export const services = [
   {
-    id: "laundry",
-    title: "Laundry Washing",
-    description: "Premium machine & hand wash for all fabric types. We treat every garment with care using gentle, eco-friendly detergents.",
-    benefits: ["Eco-friendly detergents", "Gentle fabric care", "Separate color sorting", "Stain treatment"],
-    icon: "Shirt",
+    id: "wash-fold",
+    title: "Wash & Fold",
+    description: "Machine wash with eco-friendly detergents, dried and neatly folded. Perfect for everyday clothes.",
+    price: "₹99/kg",
+    minOrder: "3 kg minimum",
+    turnaround: "24 hrs",
+    benefits: ["Eco-friendly detergents", "Color-sorted washes", "Neatly folded", "Same-day available"],
   },
   {
     id: "dry-clean",
     title: "Dry Cleaning",
-    description: "Professional dry cleaning for suits, formal wear, and delicate fabrics. Expert stain removal and fabric protection.",
-    benefits: ["Solvent-based cleaning", "Formal wear specialist", "Delicate fabric safe", "Wrinkle-free finish"],
-    icon: "Shirt",
+    description: "Professional solvent-based cleaning for suits, formal wear, and delicate fabrics. Expert stain removal.",
+    price: "₹249/item",
+    minOrder: "2 items minimum",
+    turnaround: "48 hrs",
+    benefits: ["Solvent-based cleaning", "Stain removal", "Fabric protection", "Wrinkle-free finish"],
   },
   {
     id: "ironing",
-    title: "Ironing",
-    description: "Professional steam ironing with crisp, precise finishes. Each garment is pressed to perfection.",
+    title: "Ironing & Pressing",
+    description: "Professional steam ironing with crisp, precise finishes. Each garment pressed to perfection.",
+    price: "₹29/item",
+    minOrder: "5 items minimum",
+    turnaround: "24 hrs",
     benefits: ["Steam pressed", "Crisp creases", "Wrinkle removal", "Same-day available"],
-    icon: "Shirt",
   },
   {
     id: "shoe-care",
     title: "Shoe Cleaning",
-    description: "Complete shoe care service including cleaning, deodorizing, and restoration for all materials.",
-    benefits: ["Deep cleaning", "Deodorizing treatment", "Material-specific care", "Color restoration"],
-    icon: "Shirt",
-  },
-  {
-    id: "bag-care",
-    title: "Bag Cleaning",
-    description: "Specialized cleaning for handbags, backpacks, and luggage. Gentle yet effective cleaning for all materials.",
-    benefits: ["Material-safe cleaning", "Stain removal", "Leather conditioning", "Shape preservation"],
-    icon: "Shirt",
-  },
-  {
-    id: "teddy-care",
-    title: "Teddy Cleaning",
-    description: "Gentle cleaning for stuffed toys and soft items. Safe, hygienic cleaning that preserves softness and shape.",
-    benefits: ["Gentle wash cycle", "Hypoallergenic process", "Shape retention", "Safe for kids"],
-    icon: "Shirt",
-  },
-  {
-    id: "color-restoration",
-    title: "Colour Restoration",
-    description: "Revive faded garments with our professional colour restoration treatment. Breathe new life into your favourites.",
-    benefits: ["Fade reversal", "Colour refresh", "Fabric-safe dyes", "Even tone finish"],
-    icon: "Shirt",
+    description: "Deep cleaning, deodorizing, and restoration for sneakers, leather shoes, and more.",
+    price: "₹199/pair",
+    minOrder: "1 pair",
+    turnaround: "48 hrs",
+    benefits: ["Deep cleaning", "Deodorizing", "Material-specific care", "Color restoration"],
   },
 ];
 
-export const whyChooseUs = [
+export const beforeAfterPhotos = [
   {
-    title: "Premium Care",
-    description: "Every garment receives premium, professional care with attention to detail.",
-    icon: "Sparkles",
+    id: 1,
+    label: "Stain removal — curry stain on white fabric",
+    result: "Completely removed",
+    category: "stain-removal",
   },
   {
-    title: "Pickup & Delivery",
-    description: "Free pickup and delivery right to your doorstep. Convenient scheduling.",
-    icon: "Truck",
+    id: 2,
+    label: "Shoe restoration — old sneakers",
+    result: "Like new",
+    category: "shoe-care",
   },
   {
-    title: "Multiple Branches",
-    description: "4 convenient locations across Hyderabad. Always near you.",
-    icon: "MapPin",
+    id: 3,
+    label: "Formal shirt — collar ring removal",
+    result: "Spotless",
+    category: "dry-cleaning",
   },
   {
-    title: "Fabric Safety",
-    description: "Gentle, fabric-safe processes. Eco-friendly detergents used.",
-    icon: "ShieldCheck",
+    id: 4,
+    label: "White shirt revival — yellow collar stain",
+    result: "Bright white",
+    category: "stain-removal",
   },
   {
-    title: "Expert Handling",
-    description: "Trained professionals with years of garment care experience.",
-    icon: "Users",
+    id: 5,
+    label: "Silk saree — water stain removal",
+    result: "Restored",
+    category: "dry-cleaning",
   },
   {
-    title: "Quick Service",
-    description: "Fast turnaround times. Same-day services available.",
-    icon: "Clock",
+    id: 6,
+    label: "Sneaker deep clean — grime removal",
+    result: "Like new",
+    category: "shoe-care",
   },
 ];
 
-export const testimonials = [
+export const reviews = [
   {
+    id: 1,
     name: "Priya S.",
     location: "Kompally",
-    content: "Absolutely love their service! My silk sarees came back looking brand new. The pickup and delivery is so convenient.",
+    text: "Absolutely love their service! My silk sarees came back looking brand new. The pickup and delivery is so convenient.",
     rating: 5,
   },
   {
+    id: 2,
     name: "Rahul M.",
     location: "Suchitra",
-    content: "Best dry cleaning in Hyderabad. My suits have never looked better. Highly recommended for formal wear.",
+    text: "Best dry cleaning in Hyderabad. My suits have never looked better. Highly recommended for formal wear.",
     rating: 5,
   },
   {
+    id: 3,
     name: "Ananya K.",
     location: "Dairy Farm Road",
-    content: "Their shoe cleaning service is amazing! They restored my old sneakers to almost new condition.",
+    text: "Their shoe cleaning service is amazing! They restored my old sneakers to almost new condition.",
     rating: 5,
   },
   {
+    id: 4,
     name: "Vikram R.",
     location: "Gundlapochampally",
-    content: "Regular customer for months now. Consistent quality, timely delivery, and great customer service.",
+    text: "Regular customer for months now. Consistent quality, timely delivery, and great customer service.",
+    rating: 5,
+  },
+  {
+    id: 5,
+    name: "Neha S.",
+    location: "Alwal",
+    text: "The stain removal is magic. They got months-old turmeric stains out of my daughter's dress. Lifesavers!",
+    rating: 5,
+  },
+  {
+    id: 6,
+    name: "Arun K.",
+    location: "Kompally",
+    text: "I travel for work and their subscription plan is a godsend. Clothes are always waiting for me when I return.",
+    rating: 5,
+  },
+  {
+    id: 7,
+    name: "Meera V.",
+    location: "Suchitra",
+    text: "On-time pickup, careful handling, and fresh-smelling clothes every single time. No complaints at all.",
+    rating: 5,
+  },
+  {
+    id: 8,
+    name: "Sandeep T.",
+    location: "Kompally",
+    text: "Professional, reliable, and fair pricing. The subscription saves us both time and money as a family.",
     rating: 5,
   },
 ];
@@ -181,37 +224,50 @@ export const faqs = [
     a: "Standard turnaround is 24-48 hours. Express same-day service is available for ironing and select laundry items.",
   },
   {
-    q: "How do you ensure garment safety?",
-    a: "We use eco-friendly detergents, separate color sorting, and fabric-specific cleaning processes. Each garment is handled with care.",
+    q: "How do I know if you serve my area?",
+    a: "Enter your pincode in the checker on our homepage. We currently serve Dairy Farm Road, Suchitra, Kompally, Gundlapochampally, and surrounding areas.",
   },
   {
-    q: "Which areas do you serve?",
-    a: "We currently serve Dairy Farm Road, Suchitra, Kompally, Gundlapochampally, and surrounding areas in Hyderabad.",
+    q: "What happens if my clothes get damaged?",
+    a: "We are fully insured against damage. In the rare event something goes wrong, we'll make it right.",
   },
   {
     q: "How do I book a pickup?",
-    a: "You can book through our website form, or simply message us on WhatsApp. We'll confirm and send a team member.",
+    a: "Enter your address on our homepage to check serviceability, then select your date, time, and services. Confirmation takes seconds.",
   },
   {
     q: "What payment methods do you accept?",
     a: "We accept cash, UPI (GPay, PhonePe, Paytm), and bank transfers. Payment is collected on delivery.",
+  },
+  {
+    q: "Do you offer a monthly subscription?",
+    a: "Yes! Our Unlimited Wash plan at ₹1,999/month covers up to 30kg of laundry with free pickup and delivery.",
   },
 ];
 
 export const pickupFlow = [
   {
     step: 1,
-    title: "Book Pickup",
-    description: "Schedule a pickup through our website or WhatsApp. Choose your preferred time slot.",
+    title: "Schedule",
+    description: "Choose your date, time, and services. Enter your address and we'll confirm instantly.",
   },
   {
     step: 2,
-    title: "We Collect",
-    description: "Our team arrives at your doorstep to collect your garments. Safe and contactless.",
+    title: "We Pick Up & Wash",
+    description: "Our team collects your clothes at the scheduled time. We wash, dry, and press with care.",
   },
   {
     step: 3,
-    title: "Fresh Delivery",
-    description: "Get your freshly cleaned and pressed garments delivered back to you.",
+    title: "Delivered Fresh",
+    description: "Freshly cleaned and pressed clothes delivered back to your door. Tracking included.",
   },
+];
+
+export const orderStatuses = [
+  { key: "picked-up", label: "Picked up", description: "We've collected your clothes" },
+  { key: "at-facility", label: "At facility", description: "Your order has reached our cleaning center" },
+  { key: "washing", label: "Washing", description: "Your clothes are being cleaned" },
+  { key: "quality-check", label: "Quality check", description: "Each item is inspected for quality" },
+  { key: "out-for-delivery", label: "Out for delivery", description: "Your order is on its way back" },
+  { key: "delivered", label: "Delivered", description: "Delivered and ready to wear" },
 ];
