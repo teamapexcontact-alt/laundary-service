@@ -1,14 +1,14 @@
 
 export const siteConfig = {
-  name: "DARK to WHITE",
+  name: "APEX Laundry Service",
   tagline: "Premium Laundry & Garment Care",
   description: "Premium laundry and garment care services with pickup & delivery across Hyderabad.",
-  url: "https://darktowhite.com",
-  instagram: "@dark_towhite",
-  instagramUrl: "https://instagram.com/dark_towhite",
+  url: "https://apexlaundryservice.com",
+  instagram: "@apexlaundryservice",
+  instagramUrl: "https://instagram.com/apexlaundryservice",
   phone: "+91 9876543210",
   phoneDisplay: "+91 98765 43210",
-  email: "hello@darktowhite.com",
+  email: "hello@apexlaundryservice.com",
   workingHours: "Mon - Sun: 8:00 AM - 8:00 PM",
   openGraph: {
     image: "/images/og-image.jpg",

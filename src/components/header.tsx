@@ -17,9 +17,9 @@ export function Header() {
     <header className="sticky top-0 z-50 w-full border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <Container>
         <div className="flex h-16 items-center justify-between">
-          <Link href="/" className="flex items-center gap-2" aria-label="DARK to WHITE Home">
+          <Link href="/" className="flex items-center gap-2" aria-label="APEX Laundry Service Home">
             <span className="text-xl font-bold font-heading tracking-tight text-primary">
-              DARK<span className="text-accent"> to </span>WHITE
+              APEX<span className="text-accent"> Laundry </span>Service
             </span>
           </Link>
 

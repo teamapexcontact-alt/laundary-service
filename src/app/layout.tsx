@@ -21,10 +21,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   title: {
-    default: "DARK to WHITE | Premium Laundry & Garment Care Hyderabad",
-    template: "%s | DARK to WHITE",
+    default: "APEX Laundry Service | Premium Laundry & Garment Care Hyderabad",
+    template: "%s | APEX Laundry Service",
   },
-  description: "Premium laundry, dry cleaning, shoe & bag care with pickup & delivery across Hyderabad. 4 branches. Book via WhatsApp.",
+  description: "Premium laundry, dry cleaning, shoe & bag care with pickup & delivery across Hyderabad. Book via WhatsApp.",
   keywords: [
     "premium laundry Hyderabad",
     "dry cleaning Hyderabad",
@@ -33,11 +33,11 @@ export const metadata: Metadata = {
     "bag cleaning Hyderabad",
     "ironing services Hyderabad",
     "garment care Hyderabad",
-    "DARK to WHITE",
+    "APEX Laundry Service",
   ],
-  authors: [{ name: "DARK to WHITE" }],
-  creator: "DARK to WHITE",
-  publisher: "DARK to WHITE",
+  authors: [{ name: "APEX Laundry Service" }],
+  creator: "APEX Laundry Service",
+  publisher: "APEX Laundry Service",
   robots: {
     index: true,
     follow: true,
@@ -52,25 +52,25 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "en_IN",
-    url: "https://darktowhite.com",
-    siteName: "DARK to WHITE",
-    title: "DARK to WHITE | Premium Laundry & Garment Care Hyderabad",
+    url: "https://apexlaundryservice.com",
+    siteName: "APEX Laundry Service",
+    title: "APEX Laundry Service | Premium Laundry & Garment Care Hyderabad",
     description: "Premium laundry, dry cleaning, shoe & bag care with pickup & delivery across Hyderabad.",
     images: [
       {
         url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "DARK to WHITE - Premium Laundry & Garment Care",
+        alt: "APEX Laundry Service - Premium Laundry & Garment Care",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "DARK to WHITE | Premium Laundry & Garment Care Hyderabad",
+    title: "APEX Laundry Service | Premium Laundry & Garment Care Hyderabad",
     description: "Premium laundry, dry cleaning, shoe & bag care with pickup & delivery across Hyderabad.",
     images: ["/images/og-image.jpg"],
-    creator: "@dark_towhite",
+    creator: "@apexlaundryservice",
   },
   verification: {
     google: "google-site-verification-code",

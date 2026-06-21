@@ -5,7 +5,7 @@ import { getWhatsAppUrl } from "@/lib/whatsapp";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "DARK to WHITE - Hyderabad's premium laundry and garment care brand. Our story, mission, and commitment to quality.",
+  description: "APEX Laundry Service - Hyderabad's premium laundry and garment care brand. Our story, mission, and commitment to quality.",
 };
 
 export default function AboutPage() {
@@ -18,7 +18,7 @@ export default function AboutPage() {
               Our Story
             </h1>
             <p className="mt-6 text-lg text-foreground/60 leading-relaxed">
-              DARK to WHITE was born from a simple belief: your clothes deserve better.
+              APEX Laundry Service was born from a simple belief: your clothes deserve better.
               In a city that never stops moving, we saw the need for a laundry service
               that matched the pace and lifestyle of modern Hyderabad.
             </p>

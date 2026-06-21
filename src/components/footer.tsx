@@ -12,7 +12,7 @@ export function Footer() {
           <div>
             <Link href="/" className="inline-block">
               <span className="text-xl font-bold font-heading tracking-tight">
-                DARK<span className="text-accent"> to </span>WHITE
+                APEX<span className="text-accent"> Laundry </span>Service
               </span>
             </Link>
             <p className="mt-4 text-sm text-primary-foreground/70 leading-relaxed">

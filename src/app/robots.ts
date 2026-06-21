@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: "/admin/",
     },
-    sitemap: "https://darktowhite.com/sitemap.xml",
+    sitemap: "https://apexlaundryservice.com/sitemap.xml",
   };
 }
