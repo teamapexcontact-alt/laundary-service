@@ -40,22 +40,24 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3">
               <div className="relative flex-1">
                 <MapPin className="absolute left-3.5 top-1/2 -translate-y-1/2 h-4 w-4 text-primary-foreground/40" />
-                <input
-                  type="text"
-                  placeholder="Enter your pincode or area"
-                  value={pincode}
-                  onChange={(e) => {
-                    setPincode(e.target.value);
-                    if (checked !== "idle") setChecked("idle");
-                  }}
-                  onKeyDown={(e) => e.key === "Enter" && handleCheck()}
-                  className="w-full h-12 pl-10 pr-4 rounded-lg bg-white text-foreground placeholder:text-foreground/40 text-sm font-body focus:outline-none focus:ring-2 focus:ring-accent"
-                  aria-label="Enter your pincode to check serviceability"
-                />
+                  <input
+                    type="text"
+                    placeholder="Enter your pincode or area"
+                    value={pincode}
+                    onChange={(e) => {
+                      setPincode(e.target.value);
+                      if (checked !== "idle") setChecked("idle");
+                    }}
+                    onKeyDown={(e) => e.key === "Enter" && handleCheck()}
+                    className="w-full h-12 pl-10 pr-4 rounded-lg bg-white text-foreground placeholder:text-foreground/40 text-sm font-body focus:outline-none focus:ring-2 focus:ring-accent"
+                    aria-label="Enter your pincode to check serviceability"
+                    suppressHydrationWarning
+                  />
               </div>
               <button
                 onClick={handleCheck}
                 className="h-12 px-6 rounded-lg bg-accent text-accent-foreground text-sm font-medium hover:bg-accent/90 transition-colors whitespace-nowrap inline-flex items-center justify-center gap-2"
+                suppressHydrationWarning
               >
                 <Search className="h-4 w-4" />
                 Check

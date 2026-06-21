@@ -31,6 +31,7 @@ export function FAQSection() {
                   onClick={() => setOpenIndex(openIndex === index ? null : index)}
                   aria-expanded={openIndex === index}
                   aria-controls={`faq-answer-${index}`}
+                  suppressHydrationWarning
                 >
                   <span className="text-sm font-heading font-semibold pr-4">{faq.q}</span>
                   <ChevronDown

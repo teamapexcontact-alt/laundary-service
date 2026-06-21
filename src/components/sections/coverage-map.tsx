@@ -40,11 +40,13 @@ export function CoverageMap() {
                   onKeyDown={(e) => e.key === "Enter" && handleCheck()}
                   className="w-full h-11 pl-10 pr-4 rounded-lg border border-border bg-background text-sm focus:outline-none focus:ring-2 focus:ring-accent"
                   aria-label="Enter pincode to check coverage"
+                  suppressHydrationWarning
                 />
               </div>
               <button
                 onClick={handleCheck}
                 className="h-11 px-5 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors inline-flex items-center gap-2"
+                suppressHydrationWarning
               >
                 <Search className="h-4 w-4" />
                 Check

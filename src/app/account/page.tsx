@@ -1,11 +1,21 @@
 "use client";
 
 import { useState } from "react";
+import { RotateCcw, CreditCard, Package, ChevronRight, MessageCircle } from "lucide-react";
 import { Container } from "@/components/container";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { siteConfig } from "@/config/site";
-import { RotateCcw, CreditCard, Package, ChevronRight } from "lucide-react";
 
-const pastOrders = [
+interface PastOrder {
+  id: string;
+  date: string;
+  items: string;
+  total: string;
+  status: string;
+}
+
+const pastOrders: PastOrder[] = [
   { id: "APX-1198", date: "18 Jun", items: "5 kg mixed", total: "₹400", status: "Delivered" },
   { id: "APX-1156", date: "14 Jun", items: "3 kg + 2 shirts dry clean", total: "₹380", status: "Delivered" },
   { id: "APX-1123", date: "10 Jun", items: "4 kg premium", total: "₹440", status: "Delivered" },
@@ -14,9 +24,15 @@ const pastOrders = [
 export default function AccountPage() {
   const [phone, setPhone] = useState("");
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleLogin = () => {
-    if (phone.length >= 10) setLoggedIn(true);
+    if (phone.length < 10) return;
+    setLoading(true);
+    setTimeout(() => {
+      setLoggedIn(true);
+      setLoading(false);
+    }, 400);
   };
 
   if (!loggedIn) {
@@ -27,20 +43,22 @@ export default function AccountPage() {
             <h1 className="text-3xl font-heading font-bold tracking-tight">My Account</h1>
             <p className="mt-2 text-foreground/60 text-sm">Enter your phone number to view your past orders.</p>
             <div className="mt-8 space-y-4">
-              <input
+              <Input
                 type="tel"
                 placeholder="Phone number"
                 value={phone}
                 onChange={(e) => setPhone(e.target.value)}
                 onKeyDown={(e) => e.key === "Enter" && handleLogin()}
-                className="w-full h-12 rounded-lg border border-border bg-background px-4 text-sm focus:outline-none focus:ring-2 focus:ring-accent"
+                className="w-full h-12 text-center"
               />
-              <button
+              <Button
                 onClick={handleLogin}
-                className="w-full h-12 rounded-lg bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-colors"
+                disabled={loading || phone.length < 10}
+                size="lg"
+                className="w-full"
               >
-                View orders
-              </button>
+                {loading ? "Loading..." : "View orders"}
+              </Button>
             </div>
           </div>
         </Container>
@@ -52,8 +70,12 @@ export default function AccountPage() {
     <main className="min-h-screen bg-background pt-24 pb-16">
       <Container>
         <div className="max-w-2xl mx-auto">
-          <h1 className="text-3xl font-heading font-bold tracking-tight">My Account</h1>
-          <p className="mt-1 text-foreground/60 text-sm">{phone}</p>
+          <div className="flex items-center justify-between">
+            <div>
+              <h1 className="text-3xl font-heading font-bold tracking-tight">My Account</h1>
+              <p className="mt-1 text-foreground/60 text-sm">{phone}</p>
+            </div>
+          </div>
 
           <div className="mt-8 grid grid-cols-3 gap-4">
             {[
@@ -94,9 +116,9 @@ export default function AccountPage() {
                     href={`https://wa.me/${siteConfig.phone}?text=Hi%2C%20I%27d%20like%20to%20reorder%20${order.id}`}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="text-xs text-accent hover:underline"
+                    className="inline-flex items-center gap-1 text-xs text-accent hover:underline"
                   >
-                    Reorder
+                    Reorder <ChevronRight className="h-3 w-3" />
                   </a>
                 </div>
               </div>

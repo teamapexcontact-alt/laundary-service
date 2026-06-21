@@ -10,7 +10,7 @@ interface ContainerProps {
 
 export function Container({ children, className, as: Tag = "div", id }: ContainerProps) {
   return (
-    <Tag id={id} className={cn("mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", className)}>
+    <Tag {...(id ? { id } : {})} className={cn("mx-auto max-w-7xl px-4 sm:px-6 lg:px-8", className)}>
       {children}
     </Tag>
   );
